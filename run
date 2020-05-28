@@ -1,0 +1,62 @@
+#!/bin/bash
+LINE="------------------------------"
+echo -e "$LINE\npython\n"
+python3 ./python/python.py
+START="$(date +%S%N)"
+for run in {1..100}
+do
+  python3 ./python/python.py>/dev/null
+done
+END="$(date +%S%N)"
+PYTHON="$(expr $(expr $END - $START) / 100000000)"
+echo -e "\n""$PYTHON""ms\n$LINE"
+echo -e "bash\n"
+bash ./bash/bash.sh
+START="$(date +%S%N)"
+for run in {1..1000}
+do
+  bash ./bash/bash.sh>/dev/null
+done
+END="$(date +%S%N)"
+BASH="$(expr $(expr $END - $START) / 1000000000)"
+echo -e "\n""$BASH""ms\n$LINE"
+echo -e "javascript\n"
+node ./javascript/javascript.js
+START="$(date +%S%N)"
+for run in {1..25}
+do
+  node ./javascript/javascript.js>/dev/null
+done
+END="$(date +%S%N)"
+JAVASCRIPT="$(expr $(expr $END - $START) / 25000000)"
+echo -e "\n""$JAVASCRIPT""ms\n$LINE"
+echo -e "ruby\n"
+ruby ./ruby/ruby.rb
+START="$(date +%S%N)"
+for run in {1..25}
+do
+  ruby ./ruby/ruby.rb>/dev/null
+done
+END="$(date +%S%N)"
+RUBY="$(expr $(expr $END - $START) / 25000000)"
+echo -e "\n""$RUBY""ms\n$LINE"
+echo -e "lua\n"
+lua ./lua/lua.lua
+START="$(date +%S%N)"
+for run in {1..1000}
+do
+  lua ./lua/lua.lua>/dev/null
+done
+END="$(date +%S%N)"
+LUA="$(expr $(expr $END - $START) / 1000000000)"
+echo -e "\n""$LUA""ms\n$LINE"
+echo -e "crystal\n"
+crystal ./crystal/crystal.cr
+START="$(date +%S%N)"
+for run in {1..5}
+do
+  crystal ./crystal/crystal.cr>/dev/null
+done
+END="$(date +%S%N)"
+CRYSTAL="$(expr $(expr $END - $START) / 5000000)"
+echo -e "\n""$CRYSTAL""ms\n$LINE"
