@@ -60,3 +60,15 @@ done
 END="$(date +%S%N)"
 CRYSTAL="$(expr $(expr $END - $START) / 5000000)"
 echo -e "\n""$CRYSTAL""ms\n$LINE"
+echo -e "clojure\n"
+cd ./clojure/helloworld
+lein run
+START="$(date +%S%N)"
+for run in {1..2}
+do
+  lein run>/dev/null
+done
+END="$(date +%S%N)"
+cd ../..
+CLOJURE="$(expr $(expr $END - $START) / 2000000)"
+echo -e "\n""$CLOJURE""ms\n$LINE"
