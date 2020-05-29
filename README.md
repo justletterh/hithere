@@ -5,4 +5,6 @@ this is a timed test and comparison between various language's hellow world prog
   on windows just make your own
 ### Deps
 just the languages tested and bash
+### Versions Tested
+[bash](bash/README.md)
 #### h
