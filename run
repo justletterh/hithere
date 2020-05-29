@@ -60,6 +60,16 @@ done
 END="$(date +%S%N)"
 CRYSTAL="$(expr $(expr $END - $START) / 5000000)"
 echo -e "\n""$CRYSTAL""ms\n$LINE"
+echo -e "julia\n"
+julia ./julia/julia.jl
+START="$(date +%S%N)"
+for run in {1..5}
+do
+  julia ./julia/julia.jl>/dev/null
+done
+END="$(date +%S%N)"
+JULIA="$(expr $(expr $END - $START) / 5000000)"
+echo -e "\n""$JULIA""ms\n$LINE"
 echo -e "clojure\n"
 cd ./clojure/helloworld
 lein run
@@ -72,3 +82,13 @@ END="$(date +%S%N)"
 cd ../..
 CLOJURE="$(expr $(expr $END - $START) / 2000000)"
 echo -e "\n""$CLOJURE""ms\n$LINE"
+echo -e "PHP\n"
+php ./php/php.php
+START="$(date +%S%N)"
+for run in {1..100}
+do
+  php ./php/php.php>/dev/null
+done
+END="$(date +%S%N)"
+PHP="$(expr $(expr $END - $START) / 100000000)"
+echo -e "\n""$PHP""ms\n$LINE"
